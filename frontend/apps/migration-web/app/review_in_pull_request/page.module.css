@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.infoCard {
+  background-color: #4a5568;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.infoCard h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.infoCard ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.infoCard li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.infoCard li span {
+  margin-left: 0.5rem;
+}

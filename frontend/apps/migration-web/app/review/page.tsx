@@ -1,4 +1,4 @@
-import { ReviewWindow } from '@/components/ReviewWindow'
+import { ReviewWindow } from '@/components/ReviewWindow/ReviewWindow'
 import styles from './page.module.css'
 
 export default function ReviewPage() {
