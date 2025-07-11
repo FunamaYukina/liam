@@ -52,7 +52,7 @@ jobs:
                   "hooks": [
                     {
                       "type": "command",
-                      "command": "bash -c 'cd $GITHUB_WORKSPACE && pnpm fmt && pnpm lint && echo \"✅ Format and lint checks passed\"'",
+                      "command": "bash -c 'cd $GITHUB_WORKSPACE && pnpm fmt && pnpm lint && echo \"✅ Format and lint checks passed\" || exit 2'",
                       "run_in_background": false
                     }
                   ]
