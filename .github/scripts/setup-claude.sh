@@ -4,7 +4,8 @@
 mkdir -p ~/.claude
 
 # Create settings.json with hooks configuration
-cat > ~/.claude/settings.json << 'EOF'
+# Note: Using environment variable expansion here
+cat > ~/.claude/settings.json << EOF
 {
   "enableAllProjectMcpServers": true,
   "hooks": {
@@ -14,7 +15,7 @@ cat > ~/.claude/settings.json << 'EOF'
         "hooks": [
           {
             "type": "command",
-            "command": "bash -c '$GITHUB_WORKSPACE/.github/scripts/pre-commit-hook.sh'",
+            "command": "bash -c '${GITHUB_WORKSPACE}/.github/scripts/pre-commit-hook.sh'",
             "run_in_background": false
           }
         ]
