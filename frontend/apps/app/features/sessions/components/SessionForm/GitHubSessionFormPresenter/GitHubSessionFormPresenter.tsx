@@ -1,7 +1,7 @@
 import { ArrowTooltipProvider } from '@liam-hq/ui'
 import clsx from 'clsx'
 import type { ChangeEvent, DragEvent, FC } from 'react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import type { Projects } from '@/components/CommonLayout/AppBar/ProjectsDropdownMenu/services/getProjects'
 import { createAccessibleOpacityTransition } from '@/utils/accessibleTransitions'
 import { AttachmentPreview } from '../AttachmentPreview'
@@ -44,6 +44,7 @@ export const GitHubSessionFormPresenter: FC<Props> = ({
   const [selectedProjectId, setSelectedProjectId] = useState(
     defaultProjectId || '',
   )
+  const textareaId = useId()
   const handleEnterKeySubmission = useEnterKeySubmission(
     hasContent,
     isPending,
@@ -152,7 +153,7 @@ export const GitHubSessionFormPresenter: FC<Props> = ({
             <div className={styles.formGroup}>
               <div className={styles.inputWrapper}>
                 <textarea
-                  id="initialMessage"
+                  id={textareaId}
                   name="initialMessage"
                   ref={textareaRef}
                   onChange={handleTextareaChange}

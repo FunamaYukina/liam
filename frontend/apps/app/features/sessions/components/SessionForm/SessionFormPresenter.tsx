@@ -1,4 +1,4 @@
-import { type FC, useEffect, useRef, useState } from 'react'
+import { type FC, useEffect, useId, useRef, useState } from 'react'
 import type { Projects } from '@/components/CommonLayout/AppBar/ProjectsDropdownMenu/services/getProjects'
 import { createAccessibleOpacityTransition } from '@/utils/accessibleTransitions'
 import { GitHubSessionFormPresenter } from './GitHubSessionFormPresenter'
@@ -41,6 +41,9 @@ export const SessionFormPresenter: FC<Props> = ({
   const containerRef = useRef<HTMLDivElement>(null)
   const fadeOutTimerRef = useRef<NodeJS.Timeout | null>(null)
   const fadeInTimerRef = useRef<NodeJS.Timeout | null>(null)
+  const githubPanelId = useId()
+  const uploadPanelId = useId()
+  const urlPanelId = useId()
 
   const handleModeChange = (newMode: SessionMode) => {
     if (newMode === mode || isTransitioning) return
@@ -134,7 +137,7 @@ export const SessionFormPresenter: FC<Props> = ({
         {mode === 'github' && (
           <div
             role="tabpanel"
-            id="github-panel"
+            id={githubPanelId}
             aria-labelledby="github-tab"
             style={createAccessibleOpacityTransition(!isTransitioning)}
           >
@@ -155,7 +158,7 @@ export const SessionFormPresenter: FC<Props> = ({
         {mode === 'upload' && (
           <div
             role="tabpanel"
-            id="upload-panel"
+            id={uploadPanelId}
             aria-labelledby="upload-tab"
             style={createAccessibleOpacityTransition(!isTransitioning)}
           >
@@ -170,7 +173,7 @@ export const SessionFormPresenter: FC<Props> = ({
         {mode === 'url' && (
           <div
             role="tabpanel"
-            id="url-panel"
+            id={urlPanelId}
             aria-labelledby="url-tab"
             style={createAccessibleOpacityTransition(!isTransitioning)}
           >

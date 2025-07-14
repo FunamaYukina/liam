@@ -1,4 +1,5 @@
 import type { FC } from 'react'
+import { useId } from 'react'
 
 type Props = {
   width?: number
@@ -7,6 +8,12 @@ type Props = {
 
 // TODO: Replace this with the illustration for the waiting screen once it's ready.
 export const PreviewIllustration: FC<Props> = ({ width = 80, height = 60 }) => {
+  const clipPathId = useId()
+  const filter0Id = useId()
+  const filter1Id = useId()
+  const filter2Id = useId()
+  const filter3Id = useId()
+
   return (
     <svg
       role="img"
@@ -17,32 +24,32 @@ export const PreviewIllustration: FC<Props> = ({ width = 80, height = 60 }) => {
       viewBox="0 0 234 175"
       fill="none"
     >
-      <g clipPath="url(#clip0_457_10419)">
+      <g clipPath={`url(#${clipPathId})`}>
         <path
           d="M116.771 174.501C153.481 174.501 183.241 144.741 183.241 108.031C183.241 71.3202 153.481 41.5605 116.771 41.5605C80.0604 41.5605 50.3008 71.3202 50.3008 108.031C50.3008 144.741 80.0604 174.501 116.771 174.501Z"
           stroke="#1DED83"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        <g filter="url(#filter0_i_457_10419)">
+        <g filter={`url(#${filter0Id})`}>
           <path
             d="M69.896 88.1635C70.7172 84.6348 69.9831 81.4485 68.2564 81.0466C66.5297 80.6448 64.4642 83.1797 63.6431 86.7084C62.8219 90.2371 63.556 93.4234 65.2827 93.8252C67.0094 94.227 69.0749 91.6922 69.896 88.1635Z"
             fill="#141616"
           />
         </g>
-        <g filter="url(#filter1_i_457_10419)">
+        <g filter={`url(#${filter1Id})`}>
           <path
             d="M66.0153 118.085C67.2774 118.004 68.166 115.851 68 113.278C67.834 110.704 66.6763 108.683 65.4142 108.765C64.152 108.846 63.2635 110.999 63.4295 113.572C63.5954 116.146 64.7532 118.167 66.0153 118.085Z"
             fill="#141616"
           />
         </g>
-        <g filter="url(#filter2_i_457_10419)">
+        <g filter={`url(#${filter2Id})`}>
           <path
             d="M78.7042 107.008C79.6577 106.947 80.3289 105.32 80.2034 103.374C80.078 101.429 79.2033 99.9014 78.2499 99.9629C77.2964 100.024 76.6252 101.651 76.7506 103.597C76.8761 105.542 77.7508 107.07 78.7042 107.008Z"
             fill="#141616"
           />
         </g>
-        <g filter="url(#filter3_i_457_10419)">
+        <g filter={`url(#${filter3Id})`}>
           <path
             d="M84.6897 12.4101L84.8897 9.20008C84.8897 9.20008 81.8397 3.80008 85.0497 2.14008C87.4397 0.910078 89.6097 1.74008 91.7697 3.33008C93.0397 4.27008 95.3197 4.86008 96.8497 4.64008C100.72 4.07008 107.61 3.41008 113.23 4.78008C114.57 5.11008 115.96 4.86008 117.06 4.08008C119.52 2.32008 123.19 -0.379922 125.73 0.780078C130.4 2.92008 127.04 8.25008 126.76 10.8001C126.48 13.3501 134.92 23.8501 134.92 35.4601C134.92 44.6501 146.35 45.3201 146.26 50.4701C146.17 55.6301 139.66 58.0101 131.95 52.9101C124.24 47.8101 125.33 55.4101 119.41 55.5001C113.5 55.6001 111.17 54.0801 107.99 50.8101C107.99 50.8101 105.67 48.9001 103.24 51.8901C101.03 54.6201 97.0197 55.8901 93.1397 52.5101C89.2597 49.1401 87.4797 52.4101 84.7197 53.8901C81.9597 55.3801 77.4597 53.3201 76.1597 50.0801C74.8597 46.8401 80.5497 47.1801 81.6997 41.0001L81.9097 39.8201L81.6297 39.4601C78.7997 36.2401 75.4297 29.0001 75.4297 29.0001L84.6797 12.3901L84.6897 12.4101Z"
             fill="#141616"
@@ -238,7 +245,7 @@ export const PreviewIllustration: FC<Props> = ({ width = 80, height = 60 }) => {
       </g>
       <defs>
         <filter
-          id="filter0_i_457_10419"
+          id={filter0Id}
           x="63.3066"
           y="81.0049"
           width="6.92578"
@@ -273,7 +280,7 @@ export const PreviewIllustration: FC<Props> = ({ width = 80, height = 60 }) => {
           />
         </filter>
         <filter
-          id="filter1_i_457_10419"
+          id={filter1Id}
           x="63.4092"
           y="108.762"
           width="4.61035"
@@ -308,7 +315,7 @@ export const PreviewIllustration: FC<Props> = ({ width = 80, height = 60 }) => {
           />
         </filter>
         <filter
-          id="filter2_i_457_10419"
+          id={filter2Id}
           x="76.7354"
           y="99.9612"
           width="3.4834"
@@ -343,7 +350,7 @@ export const PreviewIllustration: FC<Props> = ({ width = 80, height = 60 }) => {
           />
         </filter>
         <filter
-          id="filter3_i_457_10419"
+          id={filter3Id}
           x="75.4297"
           y="0.499512"
           width="70.8301"
@@ -377,7 +384,7 @@ export const PreviewIllustration: FC<Props> = ({ width = 80, height = 60 }) => {
             result="effect1_innerShadow_457_10419"
           />
         </filter>
-        <clipPath id="clip0_457_10419">
+        <clipPath id={clipPathId}>
           <rect width="233.81" height="175" fill="white" />
         </clipPath>
       </defs>
