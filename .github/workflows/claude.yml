@@ -52,7 +52,7 @@ jobs:
                   "hooks": [
                     {
                       "type": "command",
-                      "command": "bash -c 'cd $GITHUB_WORKSPACE && pnpm fmt && pnpm lint && echo \"✅ Format and lint checks passed\" || exit 2'",
+                      "command": "bash -c 'cd $GITHUB_WORKSPACE && echo \"🔍 Running pre-commit validation...\" && RESULT=$(pnpm fmt 2>&1) && echo \"✅ Format check passed\" && RESULT=$(pnpm lint 2>&1) && echo \"✅ Lint check passed\" && echo \"🎉 All pre-commit checks passed!\" || { echo \"❌ Pre-commit validation failed:\" && echo \"$RESULT\" && echo \"\" && echo \"📝 Please fix the above issues and try committing again.\" && echo \"💡 You can run \\\"pnpm fmt\\\" and \\\"pnpm lint\\\" to fix most issues automatically.\" && exit 2; }'",
                       "run_in_background": false
                     }
                   ]
