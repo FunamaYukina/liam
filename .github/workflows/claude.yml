@@ -41,26 +41,9 @@ jobs:
 
       - name: Setup Claude settings with lint hook
         run: |
-          mkdir -p ~/.claude
-          cat > ~/.claude/settings.json << 'EOF'
-          {
-            "enableAllProjectMcpServers": true,
-            "hooks": {
-              "PreToolUse": [
-                {
-                  "matcher": "mcp__github_file_ops__commit_files",
-                  "hooks": [
-                    {
-                      "type": "command",
-                      "command": "bash -c 'cd $GITHUB_WORKSPACE && echo \"🔍 Running pre-commit validation...\" && RESULT=$(pnpm fmt 2>&1) && echo \"✅ Format check passed\" && RESULT=$(pnpm lint 2>&1) && echo \"✅ Lint check passed\" && echo \"🎉 All pre-commit checks passed!\" || { echo \"❌ Pre-commit validation failed:\" && echo \"$RESULT\" && echo \"\" && echo \"📝 Please fix the above issues and try committing again.\" && echo \"💡 You can run \\\"pnpm fmt\\\" and \\\"pnpm lint\\\" to fix most issues automatically.\" && exit 2; }'",
-                      "run_in_background": false
-                    }
-                  ]
-                }
-              ]
-            }
-          }
-          EOF
+          chmod +x .github/scripts/pre-commit-hook.sh
+          chmod +x .github/scripts/setup-claude.sh
+          ./.github/scripts/setup-claude.sh
 
       - name: Run Claude PR Action
         uses: anthropics/claude-code-action@6364776f60df0aeb83d4efda5906d68d8cc72137 # beta
