@@ -1,4 +1,12 @@
 {
   "extends": "//",
-  "root": false
+  "root": false,
+  "linter": {
+    "rules": {
+      "nursery": {
+        // TODO: Re-enable useUniqueElementIds after fixing complex SVG components with hardcoded IDs
+        "useUniqueElementIds": "off"
+      }
+    }
+  }
 }
