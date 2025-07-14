@@ -34,7 +34,7 @@ export const CommandPalette: FC = () => {
       selectTable({ tableId: tableName, displayArea: 'main' })
       setOpen(false)
     },
-    [selectTable],
+    [selectTable, setOpen],
   )
 
   // Toggle the menu when ⌘K is pressed
@@ -48,7 +48,7 @@ export const CommandPalette: FC = () => {
 
     document.addEventListener('keydown', down)
     return () => document.removeEventListener('keydown', down)
-  }, [])
+  }, [toggleOpen])
 
   // Select option by pressing [Enter] key (with/without ⌘ key)
   useEffect(() => {
@@ -66,7 +66,7 @@ export const CommandPalette: FC = () => {
 
     document.addEventListener('keydown', down)
     return () => document.removeEventListener('keydown', down)
-  }, [open, tableName])
+  }, [open, tableName, goToERD])
 
   return (
     <Command.Dialog

@@ -114,7 +114,7 @@ export const SessionFormPresenter: FC<Props> = ({
     return () => {
       resizeObserver.disconnect()
     }
-  }, [mode])
+  }, [])
 
   // Cleanup timers on unmount
   useEffect(() => {

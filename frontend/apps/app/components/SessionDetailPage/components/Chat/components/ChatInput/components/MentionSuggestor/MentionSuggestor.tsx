@@ -49,6 +49,7 @@ export const MentionSuggestor = ({
 }: Props) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [highlightedIndex, setHighlightedIndex] = useState(0)
+  const prevQueryRef = useRef<string>('')
 
   const query = extractActiveMention(input, cursorPos)
   const matches = matchSchemaCandidates({
@@ -56,6 +57,12 @@ export const MentionSuggestor = ({
     query,
     options: { limit: maxMatches },
   })
+
+  // Reset highlighted index when query changes
+  if (query !== prevQueryRef.current) {
+    setHighlightedIndex(0)
+    prevQueryRef.current = query
+  }
 
   const handleItemMouseDown = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
@@ -114,11 +121,6 @@ export const MentionSuggestor = ({
     },
   }))
 
-  // Reset the highlighted index when the query changes
-  useEffect(() => {
-    setHighlightedIndex(0)
-  }, [query])
-
   // Scroll to make the highlighted item enabled when it changes
   useEffect(() => {
     if (!enabled || !containerRef.current) return
@@ -126,7 +128,7 @@ export const MentionSuggestor = ({
     // Use a small timeout to wait for DOM updates
     const timeoutId = setTimeout(() => {
       const active = containerRef.current?.querySelector(
-        '[aria-selected="true"]',
+        `[data-index="${highlightedIndex}"]`,
       )
       if (active) (active as HTMLElement).scrollIntoView({ block: 'nearest' })
     }, 0)

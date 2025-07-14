@@ -56,21 +56,24 @@ Please suggest a specific solution to resolve this problem.`
     setQuickFixMessage(fixMessage)
   }, [])
 
-  const handleChangeCurrentVersion = useCallback(async (version: Version) => {
-    const schema = await buildCurrentSchema({
-      designSessionId,
-      latestVersionNumber: version.number,
-    })
-    setCurrentSchema(schema)
+  const handleChangeCurrentVersion = useCallback(
+    async (version: Version) => {
+      const schema = await buildCurrentSchema({
+        designSessionId,
+        latestVersionNumber: version.number,
+      })
+      setCurrentSchema(schema)
 
-    const prevSchema = await buildPrevSchema({
-      currentSchema: schema,
-      currentVersionId: version.id,
-    })
-    setPrevSchema(prevSchema)
+      const prevSchema = await buildPrevSchema({
+        currentSchema: schema,
+        currentVersionId: version.id,
+      })
+      setPrevSchema(prevSchema)
 
-    setCurrentVersion(version)
-  }, [])
+      setCurrentVersion(version)
+    },
+    [designSessionId],
+  )
 
   const [isRefetching, startTransition] = useTransition()
   const refetchSchemaAndVersion = useCallback(async () => {
@@ -105,7 +108,7 @@ Please suggest a specific solution to resolve this problem.`
   const isGenerating = useMemo(() => {
     // Since progress role is removed, we no longer track generating state
     return false
-  }, [timelineItems])
+  }, [])
 
   // Show loading state while schema is being fetched
   if (isRefetching) {

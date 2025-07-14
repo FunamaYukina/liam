@@ -49,61 +49,6 @@ export const useMigrationsViewer = ({
     }
   }, [])
 
-  const buildExtensions = (
-    showComments: boolean,
-    onQuickFix?: (comment: string) => void,
-    showDiff?: boolean,
-    prevDoc?: string,
-  ): Extension[] => {
-    const extensions = [...baseExtensions]
-
-    if (showComments && onQuickFix) {
-      extensions.push(commentStateField(onQuickFix))
-    }
-
-    if (showDiff && prevDoc) {
-      extensions.push(
-        ...unifiedMergeView({
-          original: prevDoc,
-          highlightChanges: true,
-          gutter: true,
-          mergeControls: false,
-          syntaxHighlightDeletions: true,
-          allowInlineDiffs: true,
-        }),
-      )
-    }
-
-    return extensions
-  }
-
-  const createEditorView = (
-    doc: string,
-    extensions: Extension[],
-    container: HTMLDivElement,
-  ): EditorView => {
-    const state = EditorState.create({
-      doc,
-      extensions,
-    })
-
-    return new EditorView({
-      state,
-      parent: container,
-    })
-  }
-
-  const applyComments = (
-    view: EditorView,
-    showComments: boolean,
-    comments: ReviewComment[],
-  ): void => {
-    if (showComments && comments.length > 0) {
-      const commentEffect = setCommentsEffect.of(comments)
-      view.dispatch({ effects: [commentEffect] })
-    }
-  }
-
   useEffect(() => {
     if (!container) return
 
@@ -111,6 +56,61 @@ export const useMigrationsViewer = ({
     if (view) {
       view.destroy()
       setView(undefined)
+    }
+
+    const buildExtensions = (
+      showComments: boolean,
+      onQuickFix?: (comment: string) => void,
+      showDiff?: boolean,
+      prevDoc?: string,
+    ): Extension[] => {
+      const extensions = [...baseExtensions]
+
+      if (showComments && onQuickFix) {
+        extensions.push(commentStateField(onQuickFix))
+      }
+
+      if (showDiff && prevDoc) {
+        extensions.push(
+          ...unifiedMergeView({
+            original: prevDoc,
+            highlightChanges: true,
+            gutter: true,
+            mergeControls: false,
+            syntaxHighlightDeletions: true,
+            allowInlineDiffs: true,
+          }),
+        )
+      }
+
+      return extensions
+    }
+
+    const createEditorView = (
+      doc: string,
+      extensions: Extension[],
+      container: HTMLDivElement,
+    ): EditorView => {
+      const state = EditorState.create({
+        doc,
+        extensions,
+      })
+
+      return new EditorView({
+        state,
+        parent: container,
+      })
+    }
+
+    const applyComments = (
+      view: EditorView,
+      showComments: boolean,
+      comments: ReviewComment[],
+    ): void => {
+      if (showComments && comments.length > 0) {
+        const commentEffect = setCommentsEffect.of(comments)
+        view.dispatch({ effects: [commentEffect] })
+      }
     }
 
     const extensions = buildExtensions(
@@ -123,7 +123,16 @@ export const useMigrationsViewer = ({
     setView(viewCurrent)
 
     applyComments(viewCurrent, showComments, comments)
-  }, [doc, prevDoc, showDiff, container, showComments, comments])
+  }, [
+    doc,
+    prevDoc,
+    showDiff,
+    container,
+    showComments,
+    comments,
+    onQuickFix,
+    view,
+  ])
 
   useEffect(() => {
     if (!view || !showComments) return
