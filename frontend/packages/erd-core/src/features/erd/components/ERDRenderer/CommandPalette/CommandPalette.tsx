@@ -7,7 +7,7 @@ import {
   DialogTitle,
 } from '@radix-ui/react-dialog'
 import { Command } from 'cmdk'
-import { type FC, useCallback, useEffect, useState } from 'react'
+import { type FC, useCallback, useEffect, useId, useState } from 'react'
 import { useTableSelection } from '@/features/erd/hooks'
 import { useSchema } from '@/stores'
 import { TableNode } from '../../ERDContent/components'
@@ -28,6 +28,7 @@ export const CommandPalette: FC = () => {
   const [tableName, setTableName] = useState<string | null>(null)
   const table = schema.current.tables[tableName ?? '']
   const { selectTable } = useTableSelection()
+  const tableNodeId = useId()
 
   const goToERD = useCallback(
     (tableName: string) => {
@@ -131,7 +132,7 @@ export const CommandPalette: FC = () => {
           <div className={styles.previewBackground}>
             {table && (
               <TableNode
-                id=""
+                id={tableNodeId}
                 type="table"
                 data={{
                   table: table,
