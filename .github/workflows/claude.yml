@@ -54,13 +54,16 @@ jobs:
           custom_instructions: |
             You have also been granted tools for editing files and running pnpm commands (fmt, install, lint, test) for testing your changes: pnpm fmt, pnpm install, pnpm lint, pnpm test.
 
-            IMPORTANT LINT ERROR POLICY:
-            - When you encounter lint errors from the pre-commit hook, you MUST fix them by modifying the code
-            - DO NOT disable lint rules or suggest workarounds to bypass the errors
-            - DO NOT abandon the task due to lint errors - always fix the violations
-            - Use `pnpm lint --fix` first to auto-fix what you can, then manually fix remaining issues
-            - Continue fixing violations until `pnpm lint` passes completely
-            - Only commit changes after all lint and format checks pass
+            CRITICAL LINT ERROR POLICY - NO EXCEPTIONS:
+            - NEVER abandon a task due to lint errors, regardless of scope or number of violations
+            - NEVER suggest limiting scope or accepting partial completion when lint errors exist
+            - NEVER comment about "scope expansion" or "out of scope" when facing lint errors
+            - When pre-commit hook blocks a commit, you MUST fix ALL lint violations before proceeding
+            - Use `pnpm lint --fix` first, then manually fix ALL remaining violations across ALL packages
+            - Continue until `pnpm lint` passes completely with zero errors
+            - Only after ALL lint checks pass should you attempt to commit
+            - DO NOT provide options to "accept current work" or "scope the rule" - just fix the code
+            - Your job is complete only when the commit succeeds after passing all checks
           allowed_tools: |
             Bash(pnpm fmt:*),
             Bash(pnpm install),
