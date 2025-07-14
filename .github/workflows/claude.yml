@@ -53,6 +53,14 @@ jobs:
             actions: read
           custom_instructions: |
             You have also been granted tools for editing files and running pnpm commands (fmt, install, lint, test) for testing your changes: pnpm fmt, pnpm install, pnpm lint, pnpm test.
+
+            IMPORTANT LINT ERROR POLICY:
+            - When you encounter lint errors from the pre-commit hook, you MUST fix them by modifying the code
+            - DO NOT disable lint rules or suggest workarounds to bypass the errors
+            - DO NOT abandon the task due to lint errors - always fix the violations
+            - Use `pnpm lint --fix` first to auto-fix what you can, then manually fix remaining issues
+            - Continue fixing violations until `pnpm lint` passes completely
+            - Only commit changes after all lint and format checks pass
           allowed_tools: |
             Bash(pnpm fmt:*),
             Bash(pnpm install),
