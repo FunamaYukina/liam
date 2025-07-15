@@ -26,3 +26,9 @@ cat > ~/.claude/settings.json << EOF
 EOF
 
 echo "✅ Claude settings configured with pre-commit hook"
+echo "📄 Settings.json content:"
+cat ~/.claude/settings.json
+echo ""
+echo "🔍 Hook script path: ${GITHUB_WORKSPACE}/.github/scripts/pre-commit-hook.sh"
+echo "📁 Hook script exists: $([ -f "${GITHUB_WORKSPACE}/.github/scripts/pre-commit-hook.sh" ] && echo "YES" || echo "NO")"
+echo "🔐 Hook script executable: $([ -x "${GITHUB_WORKSPACE}/.github/scripts/pre-commit-hook.sh" ] && echo "YES" || echo "NO")"
