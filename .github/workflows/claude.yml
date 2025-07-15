@@ -54,16 +54,15 @@ jobs:
           custom_instructions: |
             You have also been granted tools for editing files and running pnpm commands (fmt, install, lint, test) for testing your changes: pnpm fmt, pnpm install, pnpm lint, pnpm test.
 
-            CRITICAL LINT ERROR POLICY - NO EXCEPTIONS:
-            - NEVER abandon a task due to lint errors, regardless of scope or number of violations
-            - NEVER suggest limiting scope or accepting partial completion when lint errors exist
-            - NEVER comment about "scope expansion" or "out of scope" when facing lint errors
-            - When pre-commit hook blocks a commit, you MUST fix ALL lint violations before proceeding
-            - Use `pnpm lint --fix` first, then manually fix ALL remaining violations across ALL packages
-            - Continue until `pnpm lint` passes completely with zero errors
-            - Only after ALL lint checks pass should you attempt to commit
-            - DO NOT provide options to "accept current work" or "scope the rule" - just fix the code
-            - Your job is complete only when the commit succeeds after passing all checks
+            MANDATORY PRE-COMMIT HOOK POLICY:
+            - When you see "mcp__github_file_ops__commit_files operation blocked by hook", this means lint/format errors exist
+            - You MUST immediately run "pnpm lint --fix" and "pnpm fmt" to fix all errors
+            - You MUST then manually fix any remaining violations shown in the error output
+            - You MUST continue fixing until "pnpm lint" and "pnpm fmt" both pass completely
+            - Only after ALL checks pass should you retry the commit
+            - NEVER abandon the task when blocked by pre-commit hook - always fix the issues
+            - Your task is NOT complete until the commit succeeds after passing all checks
+            - This is a REQUIREMENT, not a suggestion - commits MUST pass all lint/format checks
           allowed_tools: |
             Bash(pnpm fmt:*),
             Bash(pnpm install),
