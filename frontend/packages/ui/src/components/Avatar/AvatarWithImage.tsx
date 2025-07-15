@@ -54,6 +54,7 @@ export const AvatarWithImage = ({
       onClick={onClick}
       aria-label={alt}
       type="button"
+      style={{ position: 'relative' }}
       {...props}
     >
       <img
