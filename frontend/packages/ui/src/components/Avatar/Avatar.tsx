@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import type { ComponentProps } from 'react'
 import { match } from 'ts-pattern'
 import styles from './Avatar.module.css'
-import { UserAvatarIcon } from './UserAvatarIcon'
+import { UserAvatarIcon } from './UserAvatarIcon.tsx'
 
 type AvatarSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 export type AvatarUser =

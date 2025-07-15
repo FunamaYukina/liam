@@ -17,28 +17,34 @@ import {
   useMemo,
   useState,
 } from 'react'
-import { AppBar } from './AppBar'
+import { AppBar } from './AppBar/index.ts'
 import styles from './ERDRenderer.module.css'
 import '@/styles/globals.css'
-import { toggleLogEvent } from '@/features/gtm/utils'
-import { useIsTouchDevice } from '@/hooks'
-import { useVersion } from '@/providers'
-import { useSchema } from '@/stores'
-import { useUserEditing } from '@/stores/userEditing'
+import { toggleLogEvent } from '@/features/gtm/utils/index.ts'
+import { useIsTouchDevice } from '@/hooks/index.ts'
+import { useVersion } from '@/providers/index.ts'
+import { useSchema } from '@/stores/index.ts'
+import { useUserEditing } from '@/stores/userEditing/index.ts'
 import {
   convertSchemaToNodes,
   createHash,
   setCookie,
   setCookieJson,
-} from '../../utils'
-import { ERDContent } from '../ERDContent'
-import { CardinalityMarkers } from './CardinalityMarkers'
-import { CommandPalette, CommandPaletteProvider } from './CommandPalette'
-import { ErrorDisplay } from './ErrorDisplay'
-import { LeftPane } from './LeftPane'
-import { RelationshipEdgeParticleMarker } from './RelationshipEdgeParticleMarker'
-import { TableDetailDrawer, TableDetailDrawerRoot } from './TableDetailDrawer'
-import { Toolbar } from './Toolbar'
+} from '../../utils/index.ts'
+import { ERDContent } from '../ERDContent/index.ts'
+import { CardinalityMarkers } from './CardinalityMarkers/index.ts'
+import {
+  CommandPalette,
+  CommandPaletteProvider,
+} from './CommandPalette/index.ts'
+import { ErrorDisplay } from './ErrorDisplay/index.ts'
+import { LeftPane } from './LeftPane/index.ts'
+import { RelationshipEdgeParticleMarker } from './RelationshipEdgeParticleMarker/index.ts'
+import {
+  TableDetailDrawer,
+  TableDetailDrawerRoot,
+} from './TableDetailDrawer/index.ts'
+import { Toolbar } from './Toolbar/index.ts'
 
 type Props = {
   defaultSidebarOpen?: boolean | undefined

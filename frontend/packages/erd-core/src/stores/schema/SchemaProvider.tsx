@@ -6,7 +6,7 @@ import {
 } from '@liam-hq/db-structure'
 import { type FC, type PropsWithChildren, useMemo } from 'react'
 import * as v from 'valibot'
-import { SchemaContext, type SchemaContextValue } from './context'
+import { SchemaContext, type SchemaContextValue } from './context.ts'
 
 const schemaProviderSchema = v.object({
   current: schemaSchema,

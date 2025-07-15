@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import type { ComponentProps, ReactNode, Ref } from 'react'
 import { match } from 'ts-pattern'
-import { Spinner } from '../Spinner'
+import { Spinner } from '../Spinner/index.ts'
 import styles from './Button.module.css'
 
 type Props = ComponentProps<'button'> & {

@@ -14,13 +14,13 @@ import {
   useMemo,
   useState,
 } from 'react'
-import { PanelLeft } from '../../icons'
+import { PanelLeft } from '../../icons/index.ts'
 import {
   TooltipContent,
   TooltipProvider,
   TooltipRoot,
   TooltipTrigger,
-} from '../Tooltip'
+} from '../Tooltip/index.ts'
 import styles from './Sidebar.module.css'
 
 const SIDEBAR_WIDTH = '16rem'

@@ -1,12 +1,12 @@
 import type { ReactNode } from 'react'
 import { getOrganizationId } from '@/features/organizations/services/getOrganizationId'
-import { AppBar } from './AppBar'
+import { AppBar } from './AppBar/index.ts'
 import styles from './CommonLayout.module.css'
-import { GlobalNav } from './GlobalNav'
-import { OrgCookie } from './OrgCookie'
-import { getAuthUser } from './services/getAuthUser'
-import { getOrganization } from './services/getOrganization'
-import { getOrganizationsByUserId } from './services/getOrganizationsByUserId'
+import { GlobalNav } from './GlobalNav/index.ts'
+import { OrgCookie } from './OrgCookie.tsx'
+import { getAuthUser } from './services/getAuthUser.ts'
+import { getOrganization } from './services/getOrganization.ts'
+import { getOrganizationsByUserId } from './services/getOrganizationsByUserId.ts'
 
 type CommonLayoutProps = {
   projectId?: string

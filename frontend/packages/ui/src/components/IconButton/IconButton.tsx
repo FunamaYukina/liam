@@ -9,7 +9,7 @@ import {
   TooltipProvider,
   TooltipRoot,
   TooltipTrigger,
-} from '../Tooltip'
+} from '../Tooltip/index.ts'
 import styles from './IconButton.module.css'
 
 type Props = {
