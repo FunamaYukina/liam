@@ -1,11 +1,18 @@
 #!/bin/bash
+set -euo pipefail
+
+# Ensure GITHUB_WORKSPACE is set
+if [ -z "${GITHUB_WORKSPACE:-}" ]; then
+    echo "❌ Error: GITHUB_WORKSPACE is not set" >&2
+    exit 1
+fi
 
 # Create Claude settings directory
-mkdir -p ~/.claude
+mkdir -p "$HOME/.claude"
 
 # Create settings.json with hooks configuration
 # Note: Using environment variable expansion here
-cat > ~/.claude/settings.json << EOF
+cat > "$HOME/.claude/settings.json" << EOF
 {
   "enableAllProjectMcpServers": true,
   "hooks": {
