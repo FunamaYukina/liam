@@ -15,7 +15,7 @@ cat > ~/.claude/settings.json << EOF
         "hooks": [
           {
             "type": "command",
-            "command": "bash -c '${GITHUB_WORKSPACE}/.github/scripts/pre-commit-hook.sh'",
+            "command": "bash ${GITHUB_WORKSPACE}/.github/scripts/pre-commit-hook.sh",
             "run_in_background": false
           }
         ]
