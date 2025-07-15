@@ -41,7 +41,6 @@ jobs:
 
       - name: Setup Claude settings with lint hook
         run: |
-          chmod +x .github/scripts/pre-commit-hook.sh
           chmod +x .github/scripts/setup-claude.sh
           ./.github/scripts/setup-claude.sh
 
