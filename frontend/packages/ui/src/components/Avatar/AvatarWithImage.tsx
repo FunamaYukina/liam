@@ -56,6 +56,7 @@ export const AvatarWithImage = ({
       type="button"
       {...props}
     >
+      {/* biome-ignore lint/performance/noImgElement: UI library component that needs to work in non-Next.js contexts */}
       <img
         src={src}
         alt={alt}
