@@ -1,6 +1,6 @@
 import { Button, RemoveButton } from '@liam-hq/ui'
 import clsx from 'clsx'
-import { type ChangeEvent, type FC, useRef, useState } from 'react'
+import { type ChangeEvent, type FC, useId, useRef, useState } from 'react'
 import type { FormatType } from '../../../../../components/FormatIcon/FormatIcon'
 import { createAccessibleOpacityTransition } from '../../../../../utils/accessibleTransitions'
 import { AttachmentsContainer } from '../AttachmentsContainer'
@@ -41,6 +41,8 @@ export const URLSessionFormPresenter: FC<Props> = ({
   const [schemaErrorDetails, setSchemaErrorDetails] = useState<string[]>([])
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const formRef = useRef<HTMLFormElement>(null)
+  const urlInputId = useId()
+  const textareaId = useId()
 
   // File attachments hook
   const {
@@ -216,7 +218,7 @@ export const URLSessionFormPresenter: FC<Props> = ({
           <div className={styles.urlInputWrapper}>
             <div className={styles.inputContainer}>
               <input
-                id="schemaUrl"
+                id={urlInputId}
                 name="schemaUrl"
                 type="text"
                 value={urlPath}
@@ -298,7 +300,7 @@ export const URLSessionFormPresenter: FC<Props> = ({
           />
           <div className={styles.textareaWrapper}>
             <textarea
-              id="message"
+              id={textareaId}
               ref={textareaRef}
               name="message"
               placeholder="Enter your database design instructions. For example: Design a database for an e-commerce site that manages users, products, and orders..."
