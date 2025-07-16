@@ -22,7 +22,8 @@ cat > "$HOME/.claude/settings.json" << EOF
         "hooks": [
           {
             "type": "command",
-            "command": "bash -c 'cd $GITHUB_WORKSPACE && echo \"🔍 Pre-commit validation starting...\" >&2 && pnpm fmt && pnpm lint && echo \"✅ All checks passed\" >&2 || { echo \"❌ Pre-commit validation failed\" >&2 && exit 2; }'",
+            "command": "bash -c 'cd \"$GITHUB_WORKSPACE\" && echo \"🔍 Pre-commit validation starting...\" >&2 && pnpm fmt --check && pnpm lint && echo \"✅ All checks passed\" >&2 || { echo \"❌ Pre-commit validation failed\" >&2 && exit 2; }'",
+            "run_in_background": false
             "run_in_background": false
           }
         ]
