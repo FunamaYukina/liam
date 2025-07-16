@@ -28,8 +28,7 @@
         "noUnusedImports": "off",
         // TODO: Re-enable noUnusedVariables after fixing unused variables
         "noUnusedVariables": "off",
-        // TODO: Re-enable useExhaustiveDependencies after fixing hook dependencies
-        "useExhaustiveDependencies": "off",
+        "useExhaustiveDependencies": "error",
         // TODO: Re-enable useImportExtensions after fixing import extensions
         "useImportExtensions": "off"
       },
